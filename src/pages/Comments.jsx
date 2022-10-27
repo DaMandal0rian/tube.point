@@ -4,6 +4,7 @@ import TubeManager from "../services/TubeManager";
 import { useRoute } from "wouter";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { trimComment } from "../utils";
 
 const Comments = () => {
   const [comment, setComment] = useState("");
@@ -13,7 +14,8 @@ const Comments = () => {
   const commentCreateHandler = async (e) => {
     e.preventDefault();
     try {
-      TubeManager.comment(comment, parseInt(params.id)).then(function(_res){
+      let trimMsg = trimComment(comment,300);
+      TubeManager.comment(trimMsg, parseInt(params.id)).then(function(_res){
         toast.success("Comment posted successfully", {
           position: "bottom-center",
         });

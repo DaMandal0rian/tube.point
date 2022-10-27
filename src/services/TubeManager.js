@@ -32,7 +32,7 @@ class TubeManager {
 
   static comment = async (message, id) =>
     point.contractCall("TubePoint", "comment", [
-      message ? trimComment(message,256) : "",
+      message ? trimComment(message,300) : "",
       id ? id : "",
     ]);
 
