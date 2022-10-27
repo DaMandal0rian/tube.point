@@ -53,6 +53,9 @@ const VideoDetails = ({ name }) => {
 
   const likeHandler = async () => {
     try {
+      /*
+        If message already liked return error here?
+      */
       await TubeManager.like(parseInt(params.id));
       toast.success("Video Liked 👍", { position: "bottom-center" });
       TubeManager.getLikes(parseInt(params.id)).then(async function (_likes) {

@@ -1,4 +1,5 @@
 import point from "./PointSDK";
+import { trimComment } from "../utils";
 
 const EMPTY = "0x0000000000000000000000000000000000000000";
 
@@ -31,11 +32,12 @@ class TubeManager {
 
   static comment = async (message, id) =>
     point.contractCall("TubePoint", "comment", [
-      message ? message : "",
+      message ? trimComment(message,256) : "",
       id ? id : "",
     ]);
 
-  static like = async (id) => point.contractCall("TubePoint", "like", [id]);
+  static like = async (id) => 
+    point.contractCall("TubePoint", "like", [id]);
   static dislike = async (id) =>
     point.contractCall("TubePoint", "dislike", [id]);
 

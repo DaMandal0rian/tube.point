@@ -3,3 +3,10 @@ export const trimAccount = (account) => {
 }
 
 // add other util / helper functions here...
+
+export const trimComment = (comment, maxLength, delimiter = ' ') => {
+    if (comment.length <= maxLength){
+        return comment;
+    }
+    return comment.substr(0, comment.lastIndexOf(delimiter,maxLength));
+}
